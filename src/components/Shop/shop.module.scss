@@ -1,0 +1,22 @@
+.title {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 72px;
+  color: rgba(50, 135, 37, 0.72);
+}
+input {
+  position: relative;
+  background: #d9d9d9;
+  border-radius: 15px;
+  padding: 12px 10px;
+  border: none;
+}
+.img {
+  position: absolute;
+  right: 360px;
+}
+.shop {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}

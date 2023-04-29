@@ -1,0 +1,41 @@
+.img {
+  height: 200px;
+  width: 200px;
+  margin-left: 30px;
+}
+.card {
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 20px;
+  padding: 20px;
+  height: 420px;
+  width: 300px;
+  filter: drop-shadow(5px 10px 9px rgba(0, 0, 0, 0.25));
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+.maker {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: #000000;
+}
+.info {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  color: #000000;
+}
+.pricing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  img {
+    cursor: pointer;
+  }
+}
