@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./shop.module.scss";
 import Card from "../Card/Card";
 
@@ -14,18 +14,24 @@ const products = [
 ];
 
 function Shop() {
+  const [serchValue, setSearchValue] = useState("");
+  const onChangeSearchValue = (e) => {
+    setSearchValue(e.target.value);
+  };
   return (
     <div className="container mt-4 bg-warning bg-opacity-50 p-2 rounded">
       <div className="shopBody">
         <div className="d-flex justify-content-between align-items-center">
-          <h1 className={style.title}>Все ноутбуки</h1>
-          <input type="text" placeholder="Поиск..." />
+          <h1 className={style.title}>{serchValue ? `Поиск по запросу: "${serchValue}"` : "Все ноутбуки"}</h1>
+          <input type="text" placeholder="Поиск..." onChange={onChangeSearchValue} />
           <img className={style.img} src="/img/search.svg" alt="search" />
         </div>
         <div className={style.shop}>
-          {products.map((item, i) => (
-            <Card key={i} urlImg={item.urlImg} model={item.model} maker={item.maker} price={item.price} />
-          ))}
+          {products
+            .filter((product) => product.model.toLowerCase().includes(serchValue.toLowerCase()))
+            .map((item, i) => (
+              <Card key={i} urlImg={item.urlImg} model={item.model} maker={item.maker} price={item.price} />
+            ))}
         </div>
       </div>
     </div>
