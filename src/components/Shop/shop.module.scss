@@ -11,12 +11,14 @@ input {
   border-radius: 15px;
   padding: 12px 10px;
   border: none;
+  width: 300px;
 }
 .img {
   position: absolute;
-  right: 360px;
+  right: 320px;
 }
 .shop {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  padding-bottom: 20px;
 }

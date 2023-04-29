@@ -1,9 +1,9 @@
 import React from "react";
 import style from "./header.module.scss";
 
-function Header() {
+function Header({ onClickOpenCart }) {
   return (
-    <div className="container pt-5 d-flex justify-content-between bg-success align-items-center p-5 bg-opacity-10">
+    <div className="container d-flex justify-content-between bg-success align-items-center p-2 bg-opacity-10">
       <div className="headerRight">
         <div className="logo d-flex align-items-center">
           <img src="./img/logo.svg" alt="logo" />
@@ -15,7 +15,7 @@ function Header() {
           <img className="mr-5" src="/img/like.svg" alt="like" />
           <span className={style.text}>Избранное</span>
         </div>
-        <div className={style.drawer}>
+        <div className={style.drawer} onClick={onClickOpenCart}>
           <img src="/img/cart.png" alt="cart" />
           <span className={style.text}>Корзина</span>
         </div>

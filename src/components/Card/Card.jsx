@@ -19,8 +19,8 @@ function Card({ urlImg, model, maker, price }) {
           <div className={style.info}>{price} р.</div>
         </div>
         <div className={style.pricing}>
-          <img src="/img/onelike.png" alt="" />
-          <img src="/img/add.svg" alt="" />
+          <img src="/img/onelike.png" alt="onelike" />
+          <img src="/img/add.svg" alt="add" />
         </div>
       </div>
     </div>

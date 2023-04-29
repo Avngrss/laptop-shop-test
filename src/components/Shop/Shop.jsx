@@ -20,11 +20,11 @@ function Shop() {
         <div className="d-flex justify-content-between align-items-center">
           <h1 className={style.title}>Все ноутбуки</h1>
           <input type="text" placeholder="Поиск..." />
-          <img className={style.img} src="/img/search.svg" alt="" />
+          <img className={style.img} src="/img/search.svg" alt="search" />
         </div>
         <div className={style.shop}>
-          {products.map((item) => (
-            <Card urlImg={item.urlImg} model={item.model} maker={item.maker} price={item.price} />
+          {products.map((item, i) => (
+            <Card key={i} urlImg={item.urlImg} model={item.model} maker={item.maker} price={item.price} />
           ))}
         </div>
       </div>
