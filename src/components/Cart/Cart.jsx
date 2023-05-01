@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./cart.module.scss";
 
-function Cart({ onClickCloseCart }) {
+function Cart({ onClickCloseCart, items = [], onRemoveItem }) {
   return (
     <div className={style.overlay}>
       <div className={style.drawer}>
@@ -9,24 +9,26 @@ function Cart({ onClickCloseCart }) {
           <h2>Корзина</h2>
           <img className={style.closeImg} src="/img/close.svg" alt="close" onClick={onClickCloseCart} />
         </div>
-        <div className={style.cartItems}>
-          <div className={style.deleteProduct}>
-            <img src="/img/close.svg" alt="close" />
+        {items.map((obj) => (
+          <div className={style.cartItems}>
+            <div className={style.deleteProduct}>
+              <img src="/img/close.svg" alt="close" onClick={onRemoveItem} />
+            </div>
+            <img className={style.productImg} src={obj.urlImg} alt="laptop" />
+            <div className="d-flex justify-content-between align-items-center">
+              <p className={style.total}> Модель</p>
+              <p className={style.sum}>{obj.title}</p>
+            </div>
+            <div className="d-flex justify-content-between align-items-center">
+              <p className={style.total}>Производитель</p>
+              <p className={style.sum}>{obj.maker}</p>
+            </div>
+            <div className="d-flex justify-content-between align-items-center">
+              <p className={style.total}>Цена</p>
+              <p className={style.sum}>{obj.price}р.</p>
+            </div>
           </div>
-          <img className={style.productImg} src="/img/apple1.jpg" alt="" />
-          <div className="d-flex justify-content-between align-items-center">
-            <p className={style.total}> Модель</p>
-            <p className={style.sum}>ASUS VivoBook 15</p>
-          </div>
-          <div className="d-flex justify-content-between align-items-center">
-            <p className={style.total}>Производитель</p>
-            <p className={style.sum}>ASUS</p>
-          </div>
-          <div className="d-flex justify-content-between align-items-center">
-            <p className={style.total}>Цена</p>
-            <p className={style.sum}>2 716 р.</p>
-          </div>
-        </div>
+        ))}
         <div className="finally mt-5">
           <div className="d-flex justify-content-between align-items-center mb-3">
             <div className={style.total}>Итого:</div>

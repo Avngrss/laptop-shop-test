@@ -1,0 +1,10 @@
+.title {
+  font-size: 40px;
+  font-weight: bold;
+}
+.shop {
+  background-color: rgba(0, 252, 176, 0.24);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 20px;
+}
