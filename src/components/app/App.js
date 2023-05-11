@@ -1,4 +1,4 @@
-import Header from "../Header/Header.jsx";
+import Header from "../header/Header.jsx";
 import axios from "axios";
 import Cart from "../Cart/Cart.jsx";
 import React, { useState, useEffect } from "react";
@@ -17,15 +17,15 @@ import style from "./app.module.scss";
 // ];
 
 function App() {
-  const [items, setItems] = React.useState([]);
-  const [openCart, setOpenCart] = React.useState(false);
+  const [items, setItems] = useState([]);
+  const [openCart, setOpenCart] = useState(false);
   const [serchValue, setSearchValue] = useState("");
   const [cartItem, setCartItems] = useState([]);
   useEffect(() => {
-    axios.get("https://644fe6b2ba9f39c6ab6f63a6.mockapi.io/products").then((res) => {
+    axios.get("http://localhost:3031/products").then((res) => {
       setItems(res.data);
     });
-    axios.get("https://644fe6b2ba9f39c6ab6f63a6.mockapi.io/cart").then((res) => {
+    axios.get("https://64417e01fadc69b8e0858d33.mockapi.io/cart").then((res) => {
       setCartItems(res.data);
     });
   }, []);
@@ -34,16 +34,16 @@ function App() {
   };
 
   const onAddToCart = (items) => {
-    axios.post("https://644fe6b2ba9f39c6ab6f63a6.mockapi.io/products", items);
+    axios.post("https://64417e01fadc69b8e0858d33.mockapi.io/cart", items);
     setCartItems((prev) => [...prev, items]);
   };
   const onRemove = (id) => {
-    axios.delete(`https://644fe6b2ba9f39c6ab6f63a6.mockapi.io/cart/${id}`);
+    axios.delete(`https://64417e01fadc69b8e0858d33.mockapi.io/cart/${id}`);
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
   return (
     <div className="App container">
-      {openCart ? <Cart items={cartItem} onClickCloseCart={() => setOpenCart(false)} onRemoveItem={onRemove} /> : null}
+      {openCart ? <Cart items={cartItem} onClickCloseCart={() => setOpenCart(false)} onRemove={onRemove} /> : null}
       <Header onClickOpenCart={() => setOpenCart(true)} />
       <div className="d-flex justify-content-between align-items-center mt-3">
         <h1 className={style.title}>{serchValue ? `Поиск по запросу: "${serchValue}"` : "Все ноутбуки"}</h1>
@@ -53,7 +53,13 @@ function App() {
         {items
           .filter((product) => product.model.toLowerCase().includes(serchValue.toLowerCase()))
           .map((item, i) => (
-            <Card key={i} urlImg={item.urlImg} model={item.model} maker={item.maker} price={item.price} onClickAdd={onAddToCart(items)} />
+            <Card
+              key={i}
+              {...item}
+              onClickAdd={(items) => {
+                onAddToCart(items);
+              }}
+            />
           ))}
       </div>
     </div>

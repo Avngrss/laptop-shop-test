@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./cart.module.scss";
 
-function Cart({ onClickCloseCart, items = [], onRemoveItem }) {
+function Cart({ onClickCloseCart, items = [], onRemove }) {
   return (
     <div className={style.overlay}>
       <div className={style.drawer}>
@@ -12,12 +12,12 @@ function Cart({ onClickCloseCart, items = [], onRemoveItem }) {
         {items.map((obj) => (
           <div className={style.cartItems}>
             <div className={style.deleteProduct}>
-              <img src="/img/close.svg" alt="close" onClick={onRemoveItem} />
+              <img src="/img/close.svg" alt="close" onClick={() => onRemove(obj.id)} />
             </div>
             <img className={style.productImg} src={obj.urlImg} alt="laptop" />
             <div className="d-flex justify-content-between align-items-center">
               <p className={style.total}> Модель</p>
-              <p className={style.sum}>{obj.title}</p>
+              <p className={style.sum}>{obj.model}</p>
             </div>
             <div className="d-flex justify-content-between align-items-center">
               <p className={style.total}>Производитель</p>

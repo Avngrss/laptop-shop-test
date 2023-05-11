@@ -2,7 +2,7 @@ import React from "react";
 import style from "./card.module.scss";
 
 function Card({ urlImg, model, maker, price, onClickAdd }) {
-  const [isAdded, setIsAdded] = React.useState();
+  const [isAdded, setIsAdded] = React.useState(false);
   const handlePlus = () => {
     onClickAdd({ urlImg, model, maker, price });
     setIsAdded(!isAdded);
@@ -25,7 +25,7 @@ function Card({ urlImg, model, maker, price, onClickAdd }) {
         </div>
         <div className={style.pricing}>
           <img src="/img/onelike.png" alt="onelike" />
-          <img src={isAdded ? "/img/add.svg" : "/img/ok.svg"} alt="add" onClick={handlePlus} />
+          <img src={isAdded ? "/img/ok.svg" : "/img/add.svg"} alt="add" onClick={handlePlus} />
         </div>
       </div>
     </div>
