@@ -1,23 +1,14 @@
 import Header from "../header/Header.jsx";
 import axios from "axios";
+import { Route, Routes } from "react-router-dom";
 import Cart from "../Cart/Cart.jsx";
 import React, { useState, useEffect } from "react";
-import Card from "../Card/Card.jsx";
-import style from "./app.module.scss";
-
-// const products = [
-//   { urlImg: "/img/DELL1.jpg", model: "Dell Vostro 3510", maker: "DELL", price: 2938 },
-//   { urlImg: "/img/DELL2.jpg", model: "Dell Inspiron", maker: "DELL", price: 5166 },
-//   { urlImg: "/img/ASUS1.jpg", model: "ASUS VivoBook 15", maker: "ASUS", price: 2938 },
-//   { urlImg: "/img/ASUS2.jpg", model: "ASUS ROG Strix", maker: "ASUS", price: 4170 },
-//   { urlImg: "/img/apple1.jpg", model: "Apple MacBook Pro M2", maker: "Apple", price: 5242 },
-//   { urlImg: "/img/apple2.jpg", model: "Apple MacBook Air M1", maker: "Apple", price: 3869 },
-//   { urlImg: "/img/acer1.jpg", model: "Acer Nitro 5", maker: "Acer", price: 5430 },
-//   { urlImg: "/img/acer2.jpg", model: "Acer Chromebook", maker: "Acer", price: 4154 },
-// ];
+import Home from "../../pages/Home.jsx";
+import Favorite from "../../pages/Favorite.jsx";
 
 function App() {
   const [items, setItems] = useState([]);
+  const [favorites, setFavorites] = useState({});
   const [openCart, setOpenCart] = useState(false);
   const [serchValue, setSearchValue] = useState("");
   const [cartItem, setCartItems] = useState([]);
@@ -41,27 +32,20 @@ function App() {
     axios.delete(`https://64417e01fadc69b8e0858d33.mockapi.io/cart/${id}`);
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
+  const onFavorite = (items) => {
+    axios.post("https://64417e01fadc69b8e0858d33.mockapi.io/favorite", items);
+    setFavorites((prev) => [...prev, items]);
+  };
   return (
     <div className="App container">
       {openCart ? <Cart items={cartItem} onClickCloseCart={() => setOpenCart(false)} onRemove={onRemove} /> : null}
       <Header onClickOpenCart={() => setOpenCart(true)} />
-      <div className="d-flex justify-content-between align-items-center mt-3">
-        <h1 className={style.title}>{serchValue ? `Поиск по запросу: "${serchValue}"` : "Все ноутбуки"}</h1>
-        <input type="text" placeholder="Поиск..." onChange={onChangeSearchValue} />
-      </div>
-      <div className={style.shop}>
-        {items
-          .filter((product) => product.model.toLowerCase().includes(serchValue.toLowerCase()))
-          .map((item, i) => (
-            <Card
-              key={i}
-              {...item}
-              onClickAdd={(items) => {
-                onAddToCart(items);
-              }}
-            />
-          ))}
-      </div>
+      <Routes>
+        <Route path="/" element={<Home items={items} serchValue={serchValue} onChangeSearchValue={onChangeSearchValue} onAddToCart={onAddToCart} onFavorite={onFavorite} />}></Route>
+      </Routes>
+      <Routes>
+        <Route path="/favorite" element={<Favorite />}></Route>
+      </Routes>
     </div>
   );
 }
