@@ -1,5 +1,5 @@
 /* eslint-disable no-self-compare */
-import Header from "../header/Header.jsx";
+import Header from "../Header/Header.jsx";
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
 import Cart from "../Cart/Cart.jsx";
