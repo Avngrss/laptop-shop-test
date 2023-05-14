@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../components/Card/Card";
 import style from "../components/app/app.module.scss";
 
-function Home({ items, serchValue, onChangeSearchValue, onAddToCart, onFavorite }) {
+function Home({ items, serchValue, onChangeSearchValue, onAddToCart, onClickFavorite }) {
   return (
     <>
       <div className="d-flex justify-content-between align-items-center mt-3">
@@ -20,7 +20,7 @@ function Home({ items, serchValue, onChangeSearchValue, onAddToCart, onFavorite 
                 onAddToCart(items);
               }}
               onClickToFavorite={(items) => {
-                onFavorite(items);
+                onClickFavorite(items);
               }}
             />
           ))}

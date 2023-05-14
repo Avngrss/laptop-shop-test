@@ -1,10 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import style from "./card.module.scss";
 
-function Card({ urlImg, model, maker, price, onClickAdd, onClickToFavorite }) {
+function Card({ id, urlImg, model, maker, price, onClickAdd, onClickToFavorite, favorited }) {
   const [isAdded, setIsAdded] = React.useState(false);
-  const [isOnFavorite, setIsOnFavorite] = React.useState(false);
+  const [isOnFavorite, setIsOnFavorite] = React.useState(favorited);
 
   const handlePlus = () => {
     onClickAdd({ urlImg, model, maker, price });
@@ -12,7 +11,7 @@ function Card({ urlImg, model, maker, price, onClickAdd, onClickToFavorite }) {
   };
 
   const onClickFavorite = () => {
-    onClickToFavorite({ urlImg, model, maker, price });
+    onClickToFavorite({ id, urlImg, model, maker, price });
     setIsOnFavorite(!isOnFavorite);
   };
   return (
@@ -32,10 +31,9 @@ function Card({ urlImg, model, maker, price, onClickAdd, onClickToFavorite }) {
           <div className={style.info}>{price} р.</div>
         </div>
         <div className={style.pricing}>
-          <Link to={"/favorite"}>
-            <img src={isOnFavorite ? "img/like.svg" : "/img/onelike.png"} alt="onelike" onClick={onClickFavorite} />
-          </Link>
-
+          <div onClick={onClickFavorite}>
+            <img src={isOnFavorite ? "img/like.svg" : "/img/onelike.png"} alt="onelike" />
+          </div>
           <img src={isAdded ? "/img/ok.svg" : "/img/add.svg"} alt="add" onClick={handlePlus} />
         </div>
       </div>
