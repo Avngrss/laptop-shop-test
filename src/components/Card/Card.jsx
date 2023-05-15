@@ -1,12 +1,12 @@
 import React from "react";
 import style from "./card.module.scss";
 
-function Card({ id, urlImg, model, maker, price, onClickAdd, onClickToFavorite, favorited }) {
-  const [isAdded, setIsAdded] = React.useState(false);
+function Card({ id, urlImg, model, maker, price, onClickAdd, onClickToFavorite, favorited, added = false }) {
+  const [isAdded, setIsAdded] = React.useState(added);
   const [isOnFavorite, setIsOnFavorite] = React.useState(favorited);
 
   const handlePlus = () => {
-    onClickAdd({ urlImg, model, maker, price });
+    onClickAdd({ id, urlImg, model, maker, price });
     setIsAdded(!isAdded);
   };
 

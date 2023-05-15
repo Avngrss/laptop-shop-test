@@ -12,7 +12,7 @@ function Cart({ onClickCloseCart, items = [], onRemove }) {
         {items.length > 0 ? (
           <>
             {items.map((obj) => (
-              <div className={style.cartItems}>
+              <div className={style.cartItems} key={obj.id}>
                 <div className={style.deleteProduct}>
                   <img src="/img/close.svg" alt="close" onClick={() => onRemove(obj.id)} />
                 </div>
