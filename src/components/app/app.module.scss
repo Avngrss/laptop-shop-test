@@ -3,9 +3,13 @@
   font-weight: bold;
 }
 .shop {
-  background-color: rgba(0, 252, 176, 0.24);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 20px;
   border-radius: 20px;
+}
+input {
+  padding: 5px 10px;
+  border-radius: 10px;
+  border-color: rgba(50, 97, 83, 0.24);
 }

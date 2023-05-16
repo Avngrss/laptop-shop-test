@@ -5,7 +5,7 @@ import style from "../components/app/app.module.scss";
 function Favorite({ items, onClickFavorite }) {
   return (
     <div className="container">
-      <h3 className={style.title}>Мои закладки</h3>
+      <h3 className={style.title}>Избранное</h3>
       <div className={style.shop}>
         {items.map((item, i) => (
           <Card key={i} {...item} favorited={true} onClickToFavorite={onClickFavorite} />

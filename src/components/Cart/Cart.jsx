@@ -45,7 +45,7 @@ function Cart({ onClickCloseCart, items = [], onRemove }) {
           </>
         ) : (
           <div className="emptyCart d-flex flex-column justify-content-between align-items-center">
-            <h4 className="mb-4">В вашей корзине пусто</h4>
+            <h4 className="mb-4">В вашей корзине пусто :(</h4>
             <img width="100px" height="100px" src="/img/emptycart.png" alt="emptycart" />
             <p className="text-center mt-4">Перейдите в товары и сделайте выбор, чтобы оформить заказ</p>
             <button className={style.btn} onClick={onClickCloseCart}>
