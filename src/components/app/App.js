@@ -7,6 +7,8 @@ import React, { useState, useEffect } from "react";
 import Home from "../../pages/Home.jsx";
 import Favorite from "../../pages/Favorite.jsx";
 
+export const AppContext = React.createContext({});
+
 function App() {
   const [items, setItems] = useState([]);
   const [favorites, setFavorites] = useState([]);
@@ -58,19 +60,24 @@ function App() {
       alert("Не удалось добавить в закладки :(");
     }
   };
+  const changeItems = (id) => {
+    return cartItem.some((obj) => Number(obj.id) === Number(id));
+  };
 
   return (
-    <div className="App container">
-      {openCart ? <Cart items={cartItem} onClickCloseCart={() => setOpenCart(false)} onRemove={onRemove} /> : null}
-      <Header onClickOpenCart={() => setOpenCart(true)} />
-      <hr />
-      <Routes>
-        <Route path="/" element={<Home items={items} cartItem={cartItem} serchValue={serchValue} onChangeSearchValue={onChangeSearchValue} onAddToCart={onAddToCart} onClickFavorite={onAddToFavorite} contentReady={readyContent} />}></Route>
-      </Routes>
-      <Routes>
-        <Route path="/favorite" element={<Favorite items={favorites} onClickFavorite={onAddToFavorite} />}></Route>
-      </Routes>
-    </div>
+    <AppContext.Provider value={{ items, cartItem, favorites, changeItems, setOpenCart, setCartItems }}>
+      <div className="App container">
+        {openCart ? <Cart items={cartItem} onClickCloseCart={() => setOpenCart(false)} onRemove={onRemove} /> : null}
+        <Header onClickOpenCart={() => setOpenCart(true)} />
+        <hr />
+        <Routes>
+          <Route path="/" element={<Home items={items} cartItem={cartItem} serchValue={serchValue} onChangeSearchValue={onChangeSearchValue} onAddToCart={onAddToCart} onClickFavorite={onAddToFavorite} contentReady={readyContent} />}></Route>
+        </Routes>
+        <Routes>
+          <Route path="/favorite" element={<Favorite onClickFavorite={onAddToFavorite} />}></Route>
+        </Routes>
+      </div>
+    </AppContext.Provider>
   );
 }
 

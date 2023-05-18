@@ -1,8 +1,7 @@
-import React from "react";
 import Card from "../components/Card/Card";
 import style from "../components/app/app.module.scss";
 
-function Home({ items, serchValue, onChangeSearchValue, onAddToCart, onClickFavorite, cartItem, contentReady }) {
+function Home({ items, serchValue, onChangeSearchValue, onAddToCart, onClickFavorite, contentReady }) {
   const renderContent = () => {
     const filterItems = items.filter((product) => product.model.toLowerCase().includes(serchValue.toLowerCase()));
     return (contentReady ? [...Array(8)] : filterItems).map((item, i) => (
@@ -15,7 +14,6 @@ function Home({ items, serchValue, onChangeSearchValue, onAddToCart, onClickFavo
         onClickToFavorite={(items) => {
           onClickFavorite(items);
         }}
-        added={cartItem.some((obj) => Number(obj.id) === Number(item.id))}
         loading={contentReady}
       />
     ));

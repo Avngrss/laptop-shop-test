@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./cart.module.scss";
+import Info from "../Info/Info";
+import { AppContext } from "../app/App";
 
 function Cart({ onClickCloseCart, items = [], onRemove }) {
+  const { setCartItems } = React.useContext(AppContext);
+  const [isOrderCompleted, setisOrderCompleted] = useState(false);
+
+  const onClickOrder = () => {
+    setCartItems([]);
+    setisOrderCompleted(true);
+  };
   return (
     <div className={style.overlay}>
       <div className={style.drawer}>
@@ -40,18 +49,13 @@ function Cart({ onClickCloseCart, items = [], onRemove }) {
                 <div className={style.total}>Налог:</div>
                 <div className={style.sum}>5%</div>
               </div>
-              <button className={style.btn}>Заказать</button>
+              <button onClick={onClickOrder} className={style.btn}>
+                Заказать
+              </button>
             </div>
           </>
         ) : (
-          <div className="emptyCart d-flex flex-column justify-content-between align-items-center">
-            <h4 className="mb-4">В вашей корзине пусто :(</h4>
-            <img width="100px" height="100px" src="/img/emptycart.png" alt="emptycart" />
-            <p className="text-center mt-4">Перейдите в товары и сделайте выбор, чтобы оформить заказ</p>
-            <button className={style.btn} onClick={onClickCloseCart}>
-              Вернуться назад
-            </button>
-          </div>
+          <Info title={isOrderCompleted ? "Заказ оформлен" : "В вашей корзине пусто :("} description={isOrderCompleted ? "Ваш заказ #1 скоро будет обработан" : "Перейдите в товары и сделайте выбор, чтобы оформить заказ"} image={isOrderCompleted ? "/img/ordered.png" : "/img/emptycart.png"} />
         )}
       </div>
     </div>

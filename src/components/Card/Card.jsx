@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Skeleton from "../Skeleton/Skeleton";
 import style from "./card.module.scss";
+import { AppContext } from "../app/App";
 
-function Card({ id, urlImg, model, maker, price, onClickAdd, onClickToFavorite, favorited, added = false, loading = false }) {
-  const [isAdded, setIsAdded] = React.useState(added);
+function Card({ id, urlImg, model, maker, price, onClickAdd, onClickToFavorite, favorited = false, loading = false }) {
+  const { changeItems } = useContext(AppContext);
+
   const [isOnFavorite, setIsOnFavorite] = React.useState(favorited);
 
   const handlePlus = () => {
     onClickAdd({ id, urlImg, model, maker, price });
-    setIsAdded(!isAdded);
   };
 
   const onClickFavorite = () => {
@@ -40,7 +41,7 @@ function Card({ id, urlImg, model, maker, price, onClickAdd, onClickToFavorite, 
               <div onClick={onClickFavorite}>
                 <img src={isOnFavorite ? "img/like.svg" : "/img/onelike.png"} alt="onelike" />
               </div>
-              <img src={isAdded ? "/img/ok.svg" : "/img/add.svg"} alt="add" onClick={handlePlus} />
+              <img src={changeItems(id) ? "/img/ok.svg" : "/img/add.svg"} alt="add" onClick={handlePlus} />
             </div>
           </>
         )}
