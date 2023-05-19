@@ -67,7 +67,7 @@ function App() {
   return (
     <AppContext.Provider value={{ items, cartItem, favorites, changeItems, setOpenCart, setCartItems }}>
       <div className="App container">
-        {openCart ? <Cart items={cartItem} onClickCloseCart={() => setOpenCart(false)} onRemove={onRemove} /> : null}
+        {openCart ? <Cart items={cartItem} onClickCloseCart={() => setOpenCart(false)} onRemove={onRemove} opened={openCart} /> : null}
         <Header onClickOpenCart={() => setOpenCart(true)} />
         <hr />
         <Routes>

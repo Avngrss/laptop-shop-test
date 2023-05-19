@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import style from "./header.module.scss";
+import { useCart } from "../../hooks/useCart";
 
 function Header({ onClickOpenCart }) {
+  const { totalPrice } = useCart();
   return (
     <div className="container d-flex justify-content-between bg-success align-items-center p-2 bg-opacity-10">
       <div className="headerRight">
@@ -26,6 +28,7 @@ function Header({ onClickOpenCart }) {
           <img width="30px" height="30px" src="/img/cart.png" alt="cart" />
           <span className={style.text}>Корзина</span>
         </div>
+        <div className={style.headerPrice}>Сумма заказа: {totalPrice} р.</div>
       </div>
     </div>
   );

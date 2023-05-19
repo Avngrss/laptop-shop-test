@@ -6,6 +6,17 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out;
+  overflow: hidden;
+}
+.overlayVisible {
+  visibility: visible;
+  opacity: 1;
+  .draver {
+    transform: translateX(0);
+  }
 }
 .drawer {
   position: absolute;
@@ -19,6 +30,8 @@
   display: flex;
   flex-direction: column;
   overflow: auto;
+  transform: translateX(5%);
+  transition: transform 0.4s ease-in-out;
   h2 {
     font-weight: 600;
     font-size: 40px;
@@ -50,10 +63,10 @@
   font-weight: bold;
 }
 .sum {
-  font-weight: 300;
   font-size: 16px;
   line-height: 22px;
   text-align: center;
+  font-weight: bold;
 }
 .deleteProduct {
   cursor: pointer;

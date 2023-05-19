@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import style from "./cart.module.scss";
-import Info from "../Info/Info";
-import { AppContext } from "../app/App";
 
-function Cart({ onClickCloseCart, items = [], onRemove }) {
-  const { setCartItems } = React.useContext(AppContext);
+import Info from "../Info/Info";
+import { useCart } from "../../hooks/useCart";
+
+import style from "./cart.module.scss";
+
+function Cart({ onClickCloseCart, items = [], onRemove, opened }) {
+  const { setCartItems, totalPrice } = useCart();
   const [isOrderCompleted, setisOrderCompleted] = useState(false);
 
   const onClickOrder = () => {
@@ -12,7 +14,7 @@ function Cart({ onClickCloseCart, items = [], onRemove }) {
     setisOrderCompleted(true);
   };
   return (
-    <div className={style.overlay}>
+    <div className={`${style.overlay} ${opened ? style.overlayVisible : ""}`}>
       <div className={style.drawer}>
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h2>Корзина</h2>
@@ -43,11 +45,11 @@ function Cart({ onClickCloseCart, items = [], onRemove }) {
             <div className="finally mt-5">
               <div className="d-flex justify-content-between align-items-center mb-3">
                 <div className={style.total}>Итого:</div>
-                <div className={style.sum}>2100 р.</div>
+                <div className={style.sum}>{totalPrice} р.</div>
               </div>
               <div className="d-flex justify-content-between align-items-center mb-4">
                 <div className={style.total}>Налог:</div>
-                <div className={style.sum}>5%</div>
+                <div className={style.sum}>{(totalPrice / 100) * 5} р.</div>
               </div>
               <button onClick={onClickOrder} className={style.btn}>
                 Заказать
