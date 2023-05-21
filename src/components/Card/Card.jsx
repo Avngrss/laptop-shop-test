@@ -39,9 +39,9 @@ function Card({ id, urlImg, model, maker, price, onClickAdd, onClickToFavorite, 
             <hr />
             <div className={style.pricing}>
               <div onClick={onClickFavorite}>
-                <img src={isOnFavorite ? "img/like.svg" : "/img/onelike.png"} alt="onelike" />
+                <img src={isOnFavorite ? "img/like.svg" : "img/onelike.png"} alt="onelike" />
               </div>
-              <img src={changeItems(id) ? "/img/ok.svg" : "/img/add.svg"} alt="add" onClick={handlePlus} />
+              <img src={changeItems(id) ? "img/ok.svg" : "img/add.svg"} alt="add" onClick={handlePlus} />
             </div>
           </>
         )}

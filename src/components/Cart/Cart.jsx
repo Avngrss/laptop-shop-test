@@ -18,14 +18,14 @@ function Cart({ onClickCloseCart, items = [], onRemove, opened }) {
       <div className={style.drawer}>
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h2>Корзина</h2>
-          <img className={style.closeImg} src="/img/close.svg" alt="close" onClick={onClickCloseCart} />
+          <img className={style.closeImg} src="img/close.svg" alt="close" onClick={onClickCloseCart} />
         </div>
         {items.length > 0 ? (
           <>
             {items.map((obj) => (
               <div className={style.cartItems} key={obj.id}>
                 <div className={style.deleteProduct}>
-                  <img src="/img/close.svg" alt="close" onClick={() => onRemove(obj.id)} />
+                  <img src="img/close.svg" alt="close" onClick={() => onRemove(obj.id)} />
                 </div>
                 <img className={style.productImg} src={obj.urlImg} alt="laptop" />
                 <div className="d-flex justify-content-between align-items-center">
@@ -57,7 +57,7 @@ function Cart({ onClickCloseCart, items = [], onRemove, opened }) {
             </div>
           </>
         ) : (
-          <Info title={isOrderCompleted ? "Заказ оформлен" : "В вашей корзине пусто :("} description={isOrderCompleted ? "Ваш заказ #1 скоро будет обработан" : "Перейдите в товары и сделайте выбор, чтобы оформить заказ"} image={isOrderCompleted ? "/img/ordered.png" : "/img/emptycart.png"} />
+          <Info title={isOrderCompleted ? "Заказ оформлен" : "В вашей корзине пусто :("} description={isOrderCompleted ? "Ваш заказ #1 скоро будет обработан" : "Перейдите в товары и сделайте выбор, чтобы оформить заказ"} image={isOrderCompleted ? "img/ordered.png" : "img/emptycart.png"} />
         )}
       </div>
     </div>
