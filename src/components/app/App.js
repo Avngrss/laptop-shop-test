@@ -93,7 +93,7 @@ function App() {
         <Header onClickOpenCart={() => setOpenCart(true)} />
         <hr />
         <Routes>
-          <Route exact path="" element={<Home items={items} cartItem={cartItem} serchValue={serchValue} onChangeSearchValue={onChangeSearchValue} onAddToCart={onAddToCart} onClickFavorite={onAddToFavorite} contentReady={readyContent} />}></Route>
+          <Route exact path="/" element={<Home items={items} cartItem={cartItem} serchValue={serchValue} onChangeSearchValue={onChangeSearchValue} onAddToCart={onAddToCart} onClickFavorite={onAddToFavorite} contentReady={readyContent} />}></Route>
         </Routes>
         <Routes>
           <Route exact path="favorite" element={<Favorite onClickFavorite={onAddToFavorite} />}></Route>
