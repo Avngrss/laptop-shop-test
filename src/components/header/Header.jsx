@@ -9,7 +9,7 @@ function Header({ onClickOpenCart }) {
     <div className="container d-flex justify-content-between bg-success align-items-center p-2 bg-opacity-10">
       <div className="headerRight">
         <div className="logo d-flex align-items-center">
-          <Link to={""}>
+          <Link>
             <div className="d-flex justify-content-between align-items-center gap-1">
               <img src="img/logo.svg" alt="logo" />
               <p className={style.logoText}>Laptopus.by</p>
