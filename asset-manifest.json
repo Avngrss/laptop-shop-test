@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/laptop-shop-test/static/css/main.cad3755b.css",
-    "main.js": "/laptop-shop-test/static/js/main.5f1cf996.js",
+    "main.js": "/laptop-shop-test/static/js/main.561658ea.js",
     "index.html": "/laptop-shop-test/index.html",
     "main.cad3755b.css.map": "/laptop-shop-test/static/css/main.cad3755b.css.map",
-    "main.5f1cf996.js.map": "/laptop-shop-test/static/js/main.5f1cf996.js.map"
+    "main.561658ea.js.map": "/laptop-shop-test/static/js/main.561658ea.js.map"
   },
   "entrypoints": [
     "static/css/main.cad3755b.css",
-    "static/js/main.5f1cf996.js"
+    "static/js/main.561658ea.js"
   ]
 }
