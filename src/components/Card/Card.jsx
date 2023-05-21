@@ -5,15 +5,15 @@ import { AppContext } from "../app/App";
 
 function Card({ id, urlImg, model, maker, price, onClickAdd, onClickToFavorite, favorited = false, loading = false }) {
   const { changeItems } = useContext(AppContext);
-
   const [isOnFavorite, setIsOnFavorite] = React.useState(favorited);
+  const obj = { id, parentId: id, urlImg, model, maker, price };
 
   const handlePlus = () => {
-    onClickAdd({ id, urlImg, model, maker, price });
+    onClickAdd(obj);
   };
 
   const onClickFavorite = () => {
-    onClickToFavorite({ id, urlImg, model, maker, price });
+    onClickToFavorite(obj);
     setIsOnFavorite(!isOnFavorite);
   };
   return (
