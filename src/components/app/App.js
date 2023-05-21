@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     async function getData() {
       try {
-        const [getItems, getCart, getFavorite] = await Promise.all([axios.get("http://localhost:3031/products"), axios.get("https://64417e01fadc69b8e0858d33.mockapi.io/cart"), axios.get("https://64417e01fadc69b8e0858d33.mockapi.io/favorite")]);
+        const [getItems, getCart, getFavorite] = await Promise.all([axios.get("https://644fe6b2ba9f39c6ab6f63a6.mockapi.io/products"), axios.get("https://64417e01fadc69b8e0858d33.mockapi.io/cart"), axios.get("https://64417e01fadc69b8e0858d33.mockapi.io/favorite")]);
 
         setReadyContent(false);
 
@@ -79,7 +79,7 @@ function App() {
         setFavorites((prev) => [...prev, data]);
       }
     } catch (error) {
-      alert("Не удалось добавить в закладки :(");
+      alert("Не удалось добавить в избранное :(");
     }
   };
   const changeItems = (id) => {
